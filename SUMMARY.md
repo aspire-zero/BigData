@@ -1,8 +1,8 @@
 # Summary
 
 * [前言](README.md)
-* [第一章](Chapter1/README.md)
-    * [第1节：mianyi](Chapter1/衣.md)
+* [安装软件章节](Chapter1/README.md)
+    * [Gitbook简明安装](Chapter1/Gitbook简明安装.md)
     * [第2节：食](Chapter1/食.md)
     * [第3节：住](Chapter1/住.md)
     * [第4节：行](Chapter1/行.md)
