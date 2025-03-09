@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>安装软件章节 · 知识手册</title>
+        <title>面试算法题 · 知识手册</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Gitbook简明安装.html" />
+    <link rel="next" href="面试题.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="算法学习.html" />
     
 
     </head>
@@ -131,9 +131,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="../Chapter1/">
             
-                <a href="./">
+                <a href="../Chapter1/">
             
                     
                     安装软件章节
@@ -145,9 +145,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="Gitbook简明安装.html">
+        <li class="chapter " data-level="1.2.1" data-path="../Chapter1/Gitbook简明安装.html">
             
-                <a href="Gitbook简明安装.html">
+                <a href="../Chapter1/Gitbook简明安装.html">
             
                     
                     Gitbook简明安装
@@ -487,9 +487,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../Chapter4/">
+        <li class="chapter " data-level="1.6" data-path="./">
             
-                <a href="../Chapter4/">
+                <a href="./">
             
                     
                     面试有关
@@ -501,9 +501,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../Chapter4/算法学习.html">
+        <li class="chapter " data-level="1.6.1" data-path="算法学习.html">
             
-                <a href="../Chapter4/算法学习.html">
+                <a href="算法学习.html">
             
                     
                     算法模板
@@ -514,9 +514,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../Chapter4/算法题.html">
+        <li class="chapter active" data-level="1.6.2" data-path="算法题.html">
             
-                <a href="../Chapter4/算法题.html">
+                <a href="算法题.html">
             
                     
                     面试算法题
@@ -527,9 +527,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="../Chapter4/面试题.html">
+        <li class="chapter " data-level="1.6.3" data-path="面试题.html">
             
-                <a href="../Chapter4/面试题.html">
+                <a href="面试题.html">
             
                     
                     面试题
@@ -575,7 +575,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >安装软件章节</a>
+        <a href=".." >面试算法题</a>
     </h1>
 </div>
 
@@ -590,9 +590,111 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7B2C;&#x4E00;&#x7AE0;">&#x7B2C;&#x4E00;&#x7AE0;</h1>
+                                <h2 id=""> </h2>
+<p>&#x8F93;&#x5165;n&#x4E2A;&#x6574;&#x6570;&#xFF0C;&#x8FDB;&#x884C;&#x52A0;&#x51CF;&#x7EC4;&#x5408;&#xFF0C;&#x80FD;&#x591F;&#x7EC4;&#x6210;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x4E3A;s&#x7684;&#x65B9;&#x6848;&#x6570;</p>
+<pre><code class="lang-C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">int</span> n, s;
+    <span class="hljs-keyword">int</span> a[i];
+    <span class="hljs-keyword">int</span> dp[<span class="hljs-number">2</span>][<span class="hljs-number">2000</span>];
+    <span class="hljs-built_in">cin</span> &gt;&gt; n;
+    <span class="hljs-keyword">int</span> tot = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) {
+        <span class="hljs-built_in">cin</span> &gt;&gt; a[i];
+        tot += (a[i] &gt;= <span class="hljs-number">0</span> ? a[i] : -a[i]);
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; tot &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-keyword">int</span> pos = s;
+    dp[<span class="hljs-number">0</span>][pos] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) {
+        <span class="hljs-keyword">int</span> t = (k + <span class="hljs-number">1</span>) % <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">2</span> * s; j ++) {
+            dp[t][j] = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">if</span>(j &gt;= a[i]) {
+                dp[t][j] = dp[k][j - a[i]];
+            }
+            <span class="hljs-keyword">if</span>(j + a[i] &lt;= <span class="hljs-number">2</span> * s) {
+                dp[t][j] += dp[k][j + a[i]];
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-comment">/*
+5 3
+1 1 1 1 1
+*/</span>
+</code></pre>
+<h1 id="">#</h1>
+<p>&#x9898;&#x76EE;&#xFF0C;&#x7ED9;&#x4F60;&#x4E00;&#x5806;&#x4FE1;&#x5C01;&#x5927;&#x5C0F;&#xFF0C;&#x95EE;&#x4F60;&#x6700;&#x591A;&#x80FD;&#x76F8;&#x4E92;&#x5957;&#x591A;&#x5C11;&#x4E2A;&#xFF0C;&#x53EA;&#x6709;&#x7B2C;&#x4E8C;&#x7684;&#x4FE1;&#x5C01;&#x957F;&#x548C;&#x5BBD;&#x90FD;&#x5927;&#x4E8E;&#x524D;&#x4E00;&#x4E2A;&#x624D;&#x80FD;&#x5957;&#x8FDB;&#x53BB;&#x3002; &#x6392;&#x5E8F;&#x52A0;&#x5355;&#x8C03;&#x961F;&#x5217;</p>
+<pre><code class="lang-C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; q;
+
+<span class="hljs-keyword">struct</span> cmp{
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; a, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; b)</span><span class="hljs-keyword">const</span> </span>{
+        <span class="hljs-keyword">if</span>(a[<span class="hljs-number">0</span>] == b[<span class="hljs-number">0</span>])
+            <span class="hljs-keyword">return</span> a[<span class="hljs-number">1</span>] &gt; b[<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">return</span> a[<span class="hljs-number">0</span>] &lt; b[<span class="hljs-number">0</span>];
+    }
+};
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxEnvelopes</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; envelopes)</span> </span>{
+    <span class="hljs-keyword">int</span> n = envelopes.size();
+    <span class="hljs-keyword">if</span>(n &lt;= <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    sort(envelopes.begin(), envelopes.end(), cmp());
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; f = {envelopes[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]};
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i ++) {
+        <span class="hljs-keyword">int</span> num = envelopes[i][<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">if</span>(num &gt; f.back()) {
+            f.emplace_back(num);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = f.size();
+            <span class="hljs-keyword">while</span>(l &lt; r) {
+                <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;
+                <span class="hljs-keyword">if</span>(f[mid] &gt;= num) {
+                    r = mid;
+                } <span class="hljs-keyword">else</span> {
+                    l = mid + <span class="hljs-number">1</span>;
+                }
+            }
+            <span class="hljs-built_in">cout</span> &lt;&lt; l &lt;&lt; <span class="hljs-string">&apos; &apos;</span> &lt;&lt; r;
+            f[l] = num;
+        }
+    }
+    <span class="hljs-keyword">return</span> f.size();
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">int</span> n;
+    <span class="hljs-built_in">cin</span> &gt;&gt; n;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) {
+        <span class="hljs-keyword">int</span> x, y;
+        <span class="hljs-built_in">cin</span> &gt;&gt; x &gt;&gt; y;
+        q.push_back({x, y});
+    }
+       ans = maxEnvelopes(q);
+    <span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-comment">/*
+5
+2 3
+4 6
+1 3
+2 5
+7 3
+*/</span>
+</code></pre>
+<h1 id="&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x5355;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x83B7;&#x5F97;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x503C;">&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x5355;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x83B7;&#x5F97;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x503C;</h1>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x901A;&#x8FC7;&#x5FEB;&#x6162;&#x6307;&#x9488;&#x8FDB;&#x884C;&#x8BA1;&#x7B97; </p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x7248;&#x6743;&#x4FE1;&#x606F; all right reserved&#xFF0C;powered by aspire-zero and Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2025-02-12 23:35:54
+2025-02-26 21:14:07
 </span></footer>
                                 
                                 </section>
@@ -620,12 +722,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 前言">
+                <a href="算法学习.html" class="navigation navigation-prev " aria-label="Previous page: 算法模板">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Gitbook简明安装.html" class="navigation navigation-next " aria-label="Next page: Gitbook简明安装">
+                <a href="面试题.html" class="navigation navigation-next " aria-label="Next page: 面试题">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -636,7 +738,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"安装软件章节","level":"1.2","depth":1,"next":{"title":"Gitbook简明安装","level":"1.2.1","depth":2,"path":"Chapter1/Gitbook简明安装.md","ref":"Chapter1/Gitbook简明安装.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter1/README.md","mtime":"2025-02-12T15:35:54.957Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-09T05:43:11.612Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"面试算法题","level":"1.6.2","depth":2,"next":{"title":"面试题","level":"1.6.3","depth":2,"path":"Chapter4/面试题.md","ref":"Chapter4/面试题.md","articles":[]},"previous":{"title":"算法模板","level":"1.6.1","depth":2,"path":"Chapter4/算法学习.md","ref":"Chapter4/算法学习.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter4/算法题.md","mtime":"2025-02-26T13:14:07.757Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-09T05:43:11.612Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>安装软件章节 · 知识手册</title>
+        <title>输入数据格式 · 知识手册</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Gitbook简明安装.html" />
+    <link rel="next" href="非常规代码题.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="ACM输入输出.html" />
     
 
     </head>
@@ -131,9 +131,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="../Chapter1/">
             
-                <a href="./">
+                <a href="../Chapter1/">
             
                     
                     安装软件章节
@@ -145,9 +145,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="Gitbook简明安装.html">
+        <li class="chapter " data-level="1.2.1" data-path="../Chapter1/Gitbook简明安装.html">
             
-                <a href="Gitbook简明安装.html">
+                <a href="../Chapter1/Gitbook简明安装.html">
             
                     
                     Gitbook简明安装
@@ -429,9 +429,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../Chapter5/">
+        <li class="chapter " data-level="1.5" data-path="./">
             
-                <a href="../Chapter5/">
+                <a href="./">
             
                     
                     算法题有关
@@ -443,9 +443,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../Chapter5/ACM输入输出.html">
+        <li class="chapter " data-level="1.5.1" data-path="ACM输入输出.html">
             
-                <a href="../Chapter5/ACM输入输出.html">
+                <a href="ACM输入输出.html">
             
                     
                     ACM输入输出
@@ -456,9 +456,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../Chapter5/输入数据.html">
+        <li class="chapter active" data-level="1.5.2" data-path="输入数据.html">
             
-                <a href="../Chapter5/输入数据.html">
+                <a href="输入数据.html">
             
                     
                     输入数据格式
@@ -469,9 +469,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../Chapter5/非常规代码题.html">
+        <li class="chapter " data-level="1.5.3" data-path="非常规代码题.html">
             
-                <a href="../Chapter5/非常规代码题.html">
+                <a href="非常规代码题.html">
             
                     
                     非常规代码题
@@ -575,7 +575,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >安装软件章节</a>
+        <a href=".." >输入数据格式</a>
     </h1>
 </div>
 
@@ -590,9 +590,162 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7B2C;&#x4E00;&#x7AE0;">&#x7B2C;&#x4E00;&#x7AE0;</h1>
+                                <h1 id="&#x8F93;&#x5165;&#x6570;&#x636E;">&#x8F93;&#x5165;&#x6570;&#x636E;</h1>
+<p>&#x5B9E;&#x73B0;&#x6808;</p>
+<pre><code>&#x8F93;&#x5165;&#xFF1A;
+6
+push 1
+pop
+top
+push 2
+push 3
+pop
+&#x8F93;&#x51FA;&#xFF1A;
+1
+error
+3
+</code></pre><p>C++</p>
+<pre><code class="lang-c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-keyword">int</span> arr[<span class="hljs-number">100010</span>];
+<span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span> </span>{
+    arr[cnt ++] = val;
+}
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">top</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">if</span>(cnt &lt;= <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error&quot;</span>;
+    <span class="hljs-keyword">return</span> to_string(arr[cnt - <span class="hljs-number">1</span>]);
+}
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span>(cnt &lt;= <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error&quot;</span>;
+    cnt --;
+    <span class="hljs-keyword">return</span> to_string(arr[cnt]);
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> n;
+    <span class="hljs-built_in">cin</span> &gt;&gt; n;
+    <span class="hljs-keyword">while</span>(n --) {
+        <span class="hljs-built_in">string</span> op;
+        <span class="hljs-keyword">int</span> val;
+        <span class="hljs-built_in">cin</span> &gt;&gt; op;
+        <span class="hljs-keyword">if</span>(op == <span class="hljs-string">&quot;push&quot;</span>) {
+            <span class="hljs-built_in">cin</span> &gt;&gt; val;
+            push(val);
+        }
+        <span class="hljs-keyword">if</span>(op == <span class="hljs-string">&quot;top&quot;</span>) {
+            <span class="hljs-built_in">cout</span> &lt;&lt; top() &lt;&lt; <span class="hljs-built_in">endl</span>;
+        }
+        <span class="hljs-keyword">if</span>(op == <span class="hljs-string">&quot;pop&quot;</span>) {
+            <span class="hljs-built_in">cout</span> &lt;&lt; pop() &lt;&lt; <span class="hljs-built_in">endl</span>;
+        }
+
+    }
+}
+</code></pre>
+<p>JAVA(Scnner):</p>
+<pre><code class="lang-JAVA"><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-comment">// &#x6CE8;&#x610F;&#x7C7B;&#x540D;&#x5FC5;&#x987B;&#x4E3A; Main, &#x4E0D;&#x8981;&#x6709;&#x4EFB;&#x4F55; package xxx &#x4FE1;&#x606F;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100010</span>];
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span> </span>{
+        arr[cnt ++] = val;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span>(cnt &lt;= <span class="hljs-number">0</span>)
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error&quot;</span>;
+        cnt --;
+        <span class="hljs-keyword">return</span> String.valueOf(arr[cnt]);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span>(cnt &lt;= <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error&quot;</span>;
+        }
+        <span class="hljs-keyword">return</span> String.valueOf(arr[cnt - <span class="hljs-number">1</span>]);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        Scanner in = <span class="hljs-keyword">new</span> Scanner(System.in);
+        <span class="hljs-comment">// &#x6CE8;&#x610F; hasNext &#x548C; hasNextLine &#x7684;&#x533A;&#x522B;</span>
+        <span class="hljs-comment">// BufferedReader in = new BufferedReader(new InputStreamReader(System.in));</span>
+        <span class="hljs-keyword">int</span> n = in.nextInt();
+        <span class="hljs-keyword">while</span>(n --&gt; <span class="hljs-number">0</span>){
+            String op = in.next();
+            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;push&quot;</span>.equals(op)) {
+                <span class="hljs-keyword">int</span> val = in.nextInt();
+                push(val);
+            }
+            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;pop&quot;</span>.equals(op)) {
+                System.out.println(pop());
+            }
+            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;top&quot;</span>.equals(op)) {
+                System.out.println(top());
+            }
+        }
+        in.close();
+    }
+}
+</code></pre>
+<p>Java(br): </p>
+<p>br.read() &#x53EA;&#x80FD;&#x8BFB;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x4F8B;&#x5982;&#x8F93;&#x5165;6&#xFF0C;&#x5219;int&#x4E3A;54&#xFF0C;&#x4E5F;&#x5C31;&#x662F;ASCII&#x7801;</p>
+<p>&#x76F4;&#x63A5;&#x7528;readLine()</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-comment">// &#x6CE8;&#x610F;&#x7C7B;&#x540D;&#x5FC5;&#x987B;&#x4E3A; Main, &#x4E0D;&#x8981;&#x6709;&#x4EFB;&#x4F55; package xxx &#x4FE1;&#x606F;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100010</span>];
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span> </span>{
+        arr[cnt ++] = val;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span>(cnt &lt;= <span class="hljs-number">0</span>)
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error&quot;</span>;
+        cnt --;
+        <span class="hljs-keyword">return</span> String.valueOf(arr[cnt]);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span>(cnt &lt;= <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error&quot;</span>;
+        }
+        <span class="hljs-keyword">return</span> String.valueOf(arr[cnt - <span class="hljs-number">1</span>]);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+        <span class="hljs-comment">// Scanner in = new Scanner(System.in);</span>
+        <span class="hljs-comment">// &#x6CE8;&#x610F; hasNext &#x548C; hasNextLine &#x7684;&#x533A;&#x522B;</span>
+        <span class="hljs-comment">// BufferedReader in = new BufferedReader(new InputStreamReader(System.in));</span>
+        BufferedReader br = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
+        <span class="hljs-keyword">int</span> n = Integer.valueOf(br.readLine());
+        <span class="hljs-comment">//int n = in.nextInt();</span>
+        <span class="hljs-keyword">while</span>(n --&gt; <span class="hljs-number">0</span>){
+            String[] t = br.readLine().split(<span class="hljs-string">&quot; &quot;</span>);
+            String op = t[<span class="hljs-number">0</span>];
+            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;push&quot;</span>.equals(op)) {
+                <span class="hljs-keyword">int</span> val = Integer.valueOf(t[<span class="hljs-number">1</span>]);
+                push(val);
+            }
+            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;pop&quot;</span>.equals(op)) {
+                System.out.println(pop());
+            }
+            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;top&quot;</span>.equals(op)) {
+                System.out.println(top());
+            }
+        }
+        br.close();
+        <span class="hljs-comment">// in.close();</span>
+    }
+}
+</code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x7248;&#x6743;&#x4FE1;&#x606F; all right reserved&#xFF0C;powered by aspire-zero and Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2025-02-12 23:35:54
+2025-03-02 18:06:50
 </span></footer>
                                 
                                 </section>
@@ -620,12 +773,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 前言">
+                <a href="ACM输入输出.html" class="navigation navigation-prev " aria-label="Previous page: ACM输入输出">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Gitbook简明安装.html" class="navigation navigation-next " aria-label="Next page: Gitbook简明安装">
+                <a href="非常规代码题.html" class="navigation navigation-next " aria-label="Next page: 非常规代码题">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -636,7 +789,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"安装软件章节","level":"1.2","depth":1,"next":{"title":"Gitbook简明安装","level":"1.2.1","depth":2,"path":"Chapter1/Gitbook简明安装.md","ref":"Chapter1/Gitbook简明安装.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter1/README.md","mtime":"2025-02-12T15:35:54.957Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-09T05:43:11.612Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"输入数据格式","level":"1.5.2","depth":2,"next":{"title":"非常规代码题","level":"1.5.3","depth":2,"path":"Chapter5/非常规代码题.md","ref":"Chapter5/非常规代码题.md","articles":[]},"previous":{"title":"ACM输入输出","level":"1.5.1","depth":2,"path":"Chapter5/ACM输入输出.md","ref":"Chapter5/ACM输入输出.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter5/输入数据.md","mtime":"2025-03-02T10:06:50.468Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-09T05:43:11.612Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>安装软件章节 · 知识手册</title>
+        <title>ACM输入输出 · 知识手册</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Gitbook简明安装.html" />
+    <link rel="next" href="输入数据.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -131,9 +131,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="../Chapter1/">
             
-                <a href="./">
+                <a href="../Chapter1/">
             
                     
                     安装软件章节
@@ -145,9 +145,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="Gitbook简明安装.html">
+        <li class="chapter " data-level="1.2.1" data-path="../Chapter1/Gitbook简明安装.html">
             
-                <a href="Gitbook简明安装.html">
+                <a href="../Chapter1/Gitbook简明安装.html">
             
                     
                     Gitbook简明安装
@@ -429,9 +429,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../Chapter5/">
+        <li class="chapter " data-level="1.5" data-path="./">
             
-                <a href="../Chapter5/">
+                <a href="./">
             
                     
                     算法题有关
@@ -443,9 +443,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../Chapter5/ACM输入输出.html">
+        <li class="chapter active" data-level="1.5.1" data-path="ACM输入输出.html">
             
-                <a href="../Chapter5/ACM输入输出.html">
+                <a href="ACM输入输出.html">
             
                     
                     ACM输入输出
@@ -456,9 +456,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../Chapter5/输入数据.html">
+        <li class="chapter " data-level="1.5.2" data-path="输入数据.html">
             
-                <a href="../Chapter5/输入数据.html">
+                <a href="输入数据.html">
             
                     
                     输入数据格式
@@ -469,9 +469,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../Chapter5/非常规代码题.html">
+        <li class="chapter " data-level="1.5.3" data-path="非常规代码题.html">
             
-                <a href="../Chapter5/非常规代码题.html">
+                <a href="非常规代码题.html">
             
                     
                     非常规代码题
@@ -575,7 +575,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >安装软件章节</a>
+        <a href=".." >ACM输入输出</a>
     </h1>
 </div>
 
@@ -590,9 +590,97 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7B2C;&#x4E00;&#x7AE0;">&#x7B2C;&#x4E00;&#x7AE0;</h1>
+                                <h1 id="acm&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x6A21;&#x677F;">ACM&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x6A21;&#x677F;</h1>
+<p>&#x8F93;&#x5165;&#x90E8;&#x5206;&#x5206;&#x4E3A;C++&#x548C;JAVA&#x8BED;&#x8A00;</p>
+<p><a href="https://www.nowcoder.com/exam/oj?page=1&amp;tab=&#x7B97;&#x6CD5;&#x7BC7;&amp;topicId=372" target="_blank">&#x725B;&#x5BA2;&#x7F51;&#x5728;&#x7EBF;&#x7F16;&#x7A0B;<em>&#x7B97;&#x6CD5;&#x7BC7;</em>&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x7EC3;&#x4E60;</a></p>
+<p><strong>lower_bound</strong> &#x8FD4;&#x56DE;&#x6307;&#x5411;&#x7B2C;&#x4E00;&#x4E2A;&#x503C;&#x4E0D;&#x5C0F;&#x4E8E; val &#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;val&#x503C;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x524D;&#x63D0;&#x662F;&#x6709;&#x5E8F;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<strong>upper_bound</strong> &#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;--val&#x503C;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<h2 id="&#x5B9A;&#x4E49;&#x94FE;&#x8868;">&#x5B9A;&#x4E49;&#x94FE;&#x8868;</h2>
+<pre><code class="lang-C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">struct</span> ListNode{
+    <span class="hljs-keyword">int</span> val;
+    ListNode* nxt;
+    ListNode(<span class="hljs-keyword">int</span> _val):val(_val),nxt(<span class="hljs-literal">nullptr</span>){}
+       ListNode(<span class="hljs-keyword">int</span> _val, ListNode* _nxt):val(_val),nxt(_nxt){}
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5355;&#x94FE;&#x8868;</span>
+    ListNode* head = <span class="hljs-literal">nullptr</span>;
+    ListNode* pre = head;
+    ListNode* cur = <span class="hljs-literal">nullptr</span>;
+    <span class="hljs-keyword">int</span> num;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">cin</span> &gt;&gt; num) {
+        <span class="hljs-keyword">if</span>(num == <span class="hljs-number">-1</span>) {
+            <span class="hljs-keyword">break</span>;
+        }
+        cur = <span class="hljs-keyword">new</span> ListNode(num);
+        <span class="hljs-keyword">if</span>(head == nullprt) {
+            head = cur;
+            pre = cur;
+        } <span class="hljs-keyword">else</span> {
+            pre.nxt = cur;
+            pre = cur;
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2 id="&#x5B9A;&#x4E49;&#x4E8C;&#x53C9;&#x6811;">&#x5B9A;&#x4E49;&#x4E8C;&#x53C9;&#x6811;</h2>
+<pre><code class="lang-C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-comment">//&#x5B9A;&#x4E49;&#x6811;&#x8282;&#x70B9;</span>
+<span class="hljs-keyword">struct</span> TreeNode
+{
+    <span class="hljs-keyword">int</span> val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode():val(<span class="hljs-number">0</span>),left(<span class="hljs-literal">nullptr</span>),right(<span class="hljs-literal">nullptr</span>){}
+    TreeNode(<span class="hljs-keyword">int</span> _val):val(_val),left(<span class="hljs-literal">nullptr</span>),right(<span class="hljs-literal">nullptr</span>){}
+    TreeNode(<span class="hljs-keyword">int</span> _val,TreeNode* _left,TreeNode* _right):val(<span class="hljs-number">0</span>),left(_left),right(_right){}
+};
+
+<span class="hljs-comment">//&#x6839;&#x636E;&#x6570;&#x7EC4;&#x751F;&#x6210;&#x6811;</span>
+<span class="hljs-function">TreeNode* <span class="hljs-title">buildTree</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; v)</span>
+</span>{
+    <span class="hljs-built_in">vector</span>&lt;TreeNode*&gt; vTree(v.size(),<span class="hljs-literal">nullptr</span>);
+    TreeNode* root = <span class="hljs-literal">nullptr</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; v.size(); i++)
+    {
+        TreeNode* node = <span class="hljs-literal">nullptr</span>;
+        <span class="hljs-keyword">if</span>(v[i] != <span class="hljs-number">-1</span>)
+        {
+            node = <span class="hljs-keyword">new</span> TreeNode(v[i]);
+        }
+        vTree[i] = node;
+    }
+    root = vTree[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; <span class="hljs-number">2</span> * i + <span class="hljs-number">2</span> &lt; v.size(); i++)
+    {
+        <span class="hljs-keyword">if</span>(vTree[i] != <span class="hljs-literal">nullptr</span>)
+        {
+            vTree[i]-&gt;left = vTree[<span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>];
+            vTree[i]-&gt;right = vTree[<span class="hljs-number">2</span> * i + <span class="hljs-number">2</span>];
+        }
+    }
+    <span class="hljs-keyword">return</span> root;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// &#x9A8C;&#x8BC1;</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v = {<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">6</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">8</span>};
+    TreeNode* root = buildTree(v);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x7248;&#x6743;&#x4FE1;&#x606F; all right reserved&#xFF0C;powered by aspire-zero and Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2025-02-12 23:35:54
+2025-02-26 20:48:53
 </span></footer>
                                 
                                 </section>
@@ -620,12 +708,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 前言">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 算法题有关">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Gitbook简明安装.html" class="navigation navigation-next " aria-label="Next page: Gitbook简明安装">
+                <a href="输入数据.html" class="navigation navigation-next " aria-label="Next page: 输入数据格式">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -636,7 +724,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"安装软件章节","level":"1.2","depth":1,"next":{"title":"Gitbook简明安装","level":"1.2.1","depth":2,"path":"Chapter1/Gitbook简明安装.md","ref":"Chapter1/Gitbook简明安装.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter1/README.md","mtime":"2025-02-12T15:35:54.957Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-09T05:43:11.612Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ACM输入输出","level":"1.5.1","depth":2,"next":{"title":"输入数据格式","level":"1.5.2","depth":2,"path":"Chapter5/输入数据.md","ref":"Chapter5/输入数据.md","articles":[]},"previous":{"title":"算法题有关","level":"1.5","depth":1,"path":"Chapter5/README.md","ref":"Chapter5/README.md","articles":[{"title":"ACM输入输出","level":"1.5.1","depth":2,"path":"Chapter5/ACM输入输出.md","ref":"Chapter5/ACM输入输出.md","articles":[]},{"title":"输入数据格式","level":"1.5.2","depth":2,"path":"Chapter5/输入数据.md","ref":"Chapter5/输入数据.md","articles":[]},{"title":"非常规代码题","level":"1.5.3","depth":2,"path":"Chapter5/非常规代码题.md","ref":"Chapter5/非常规代码题.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter5/ACM输入输出.md","mtime":"2025-02-26T12:48:53.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-09T05:43:11.612Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
