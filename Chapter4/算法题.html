@@ -590,7 +590,123 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id=""> </h2>
+                                <h2 id="lru-&#x7F13;&#x5B58;&#x5B9E;&#x73B0;">LRU &#x7F13;&#x5B58;&#x5B9E;&#x73B0;</h2>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x901A;&#x8FC7;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x5B9E;&#x73B0;movenode &#x548C; addtohead&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5BF9;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5229;&#x7528;map&#x8BB0;&#x5F55;key&#x5BF9;&#x5E94;&#x7684;node</p>
+<pre><code class="lang-C++"><span class="hljs-comment">/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj-&gt;get(key);
+ * obj-&gt;put(key,value);
+ */</span>
+<span class="hljs-keyword">struct</span> LRUNode{
+    <span class="hljs-keyword">int</span> key, value;
+    LRUNode* pre;
+    LRUNode* nxt;
+    LRUNode():key(<span class="hljs-number">0</span>),value(<span class="hljs-number">0</span>),pre(<span class="hljs-literal">nullptr</span>),nxt(<span class="hljs-literal">nullptr</span>){}
+    LRUNode(<span class="hljs-keyword">int</span> _key, <span class="hljs-keyword">int</span> _value) : key(_key),value(_value),pre(<span class="hljs-literal">nullptr</span>),nxt(<span class="hljs-literal">nullptr</span>){}
+    LRUNode(<span class="hljs-keyword">int</span> _key, <span class="hljs-keyword">int</span> _value, LRUNode* _pre, LRUNode* _nxt) {
+        key = _key;
+        value = _value;
+        pre = _pre;
+        nxt = _nxt;
+    }
+};
+<span class="hljs-keyword">class</span> LRUCache {
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">int</span> capacity;
+    <span class="hljs-keyword">int</span> size;
+    LRUNode* head;
+    LRUNode* tail;
+    <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, LRUNode*&gt; cache;
+<span class="hljs-keyword">public</span>:
+    LRUCache(<span class="hljs-keyword">int</span> _capacity) {
+        capacity = _capacity;
+        size = <span class="hljs-number">0</span>;
+        head = <span class="hljs-keyword">new</span> LRUNode();
+        tail = <span class="hljs-keyword">new</span> LRUNode();
+        head -&gt; nxt = tail;
+        tail -&gt; pre = head;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key)</span> </span>{
+
+        <span class="hljs-keyword">if</span>(!cache.count(key)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+        }
+        LRUNode* cur = cache[key];
+        moveToHead(cur);
+        <span class="hljs-keyword">return</span> cur -&gt; value;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key, <span class="hljs-keyword">int</span> value)</span> </span>{
+        <span class="hljs-keyword">if</span>(!cache.count(key)) {
+            LRUNode* node = <span class="hljs-keyword">new</span> LRUNode(key, value);
+            cache[key] = node;
+            addToHead(node);
+            size ++;
+            <span class="hljs-keyword">if</span>(size &gt; capacity) {
+                LRUNode* cur = moveTail();
+                cache.erase(cur -&gt; key);
+                <span class="hljs-keyword">delete</span> cur;
+                size --;
+            }
+        } <span class="hljs-keyword">else</span> {
+            LRUNode* cur = cache[key];
+            cur -&gt; value = value;
+            moveToHead(cur);
+        }
+    }
+    <span class="hljs-function">LRUNode* <span class="hljs-title">moveTail</span><span class="hljs-params">()</span> </span>{
+        LRUNode* cur = tail -&gt; pre;
+        removeNode(cur);
+        <span class="hljs-keyword">return</span> cur;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">moveToHead</span><span class="hljs-params">(LRUNode* node)</span></span>{
+        removeNode(node);
+        addToHead(node);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">removeNode</span><span class="hljs-params">(LRUNode* node)</span> </span>{
+        node -&gt; pre -&gt; nxt = node -&gt; nxt;
+        node -&gt; nxt -&gt; pre = node -&gt; pre;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addToHead</span><span class="hljs-params">(LRUNode* node)</span> </span>{
+        node -&gt; pre = head;
+        node -&gt; nxt = head -&gt; nxt;
+        head -&gt; nxt -&gt; pre = node;
+        head -&gt; nxt = node;
+    }
+};
+</code></pre>
+<h2 id="&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x524D;&#x5E8F;&#x3001;&#x4E2D;&#x5E8F;&#x3001;&#x540E;&#x5E8F;">&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x524D;&#x5E8F;&#x3001;&#x4E2D;&#x5E8F;&#x3001;&#x540E;&#x5E8F;</h2>
+<pre><code class="lang-C++"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; preorderTraversal(TreeNode* root) {
+        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ans;
+        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)
+            <span class="hljs-keyword">return</span> ans;
+        <span class="hljs-built_in">stack</span>&lt;TreeNode*&gt; s;
+        s.push(root);
+        <span class="hljs-keyword">while</span>(!s.empty()) {
+            TreeNode* t = s.top();
+            s.pop();
+            <span class="hljs-keyword">if</span>(t != <span class="hljs-literal">nullptr</span>) {
+                <span class="hljs-keyword">if</span>(t -&gt; right)
+                    s.push(t -&gt; right);
+                <span class="hljs-keyword">if</span>(t -&gt; left)
+                    s.push(t -&gt; left);
+                s.push(t);
+                s.push(<span class="hljs-literal">nullptr</span>);
+            } <span class="hljs-keyword">else</span> {
+                TreeNode* t = s.top();
+                s.pop();
+                ans.emplace_back(t -&gt; val);
+            }
+        }
+        <span class="hljs-keyword">return</span> ans;
+    }
+};
+</code></pre>
+<h2 id=""> </h2>
 <p>&#x8F93;&#x5165;n&#x4E2A;&#x6574;&#x6570;&#xFF0C;&#x8FDB;&#x884C;&#x52A0;&#x51CF;&#x7EC4;&#x5408;&#xFF0C;&#x80FD;&#x591F;&#x7EC4;&#x6210;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x4E3A;s&#x7684;&#x65B9;&#x6848;&#x6570;</p>
 <pre><code class="lang-C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
@@ -694,7 +810,7 @@
 <h1 id="&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x5355;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x83B7;&#x5F97;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x503C;">&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x5355;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x83B7;&#x5F97;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x503C;</h1>
 <p>&#x601D;&#x8DEF;&#xFF1A;&#x901A;&#x8FC7;&#x5FEB;&#x6162;&#x6307;&#x9488;&#x8FDB;&#x884C;&#x8BA1;&#x7B97; </p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x7248;&#x6743;&#x4FE1;&#x606F; all right reserved&#xFF0C;powered by aspire-zero and Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2025-02-26 21:14:07
+2025-03-16 18:56:14
 </span></footer>
                                 
                                 </section>
@@ -738,7 +854,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"面试算法题","level":"1.6.2","depth":2,"next":{"title":"面试题","level":"1.6.3","depth":2,"path":"Chapter4/面试题.md","ref":"Chapter4/面试题.md","articles":[]},"previous":{"title":"算法模板","level":"1.6.1","depth":2,"path":"Chapter4/算法学习.md","ref":"Chapter4/算法学习.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter4/算法题.md","mtime":"2025-02-26T13:14:07.757Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-09T05:43:11.612Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"面试算法题","level":"1.6.2","depth":2,"next":{"title":"面试题","level":"1.6.3","depth":2,"path":"Chapter4/面试题.md","ref":"Chapter4/面试题.md","articles":[]},"previous":{"title":"算法模板","level":"1.6.1","depth":2,"path":"Chapter4/算法学习.md","ref":"Chapter4/算法学习.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter4/算法题.md","mtime":"2025-03-16T10:56:14.763Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-16T10:56:34.997Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
