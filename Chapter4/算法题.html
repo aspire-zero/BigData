@@ -603,7 +603,99 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="lru-&#x7F13;&#x5B58;&#x5B9E;&#x73B0;">LRU &#x7F13;&#x5B58;&#x5B9E;&#x73B0;</h2>
+                                <h2 id="&#x5B9E;&#x73B0;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x6253;&#x6392;&#x7403;">&#x5B9E;&#x73B0;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x6253;&#x6392;&#x7403;</h2>
+<p>&#x601D;&#x8DEF;&#xFF1A; &#x901A;&#x8FC7;&#x4F7F;&#x7528;wait()&#x548C;notify()&#x8FDB;&#x884C;&#x63A7;&#x5236;&#x987A;&#x5E8F;&#x6216;&#x8005;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x4FE1;&#x53F7;&#x91CF;Semapore&#x7C7B;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Random;
+<span class="hljs-keyword">import</span> java.util.concurrent.Semaphore;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+
+        MyRun t = <span class="hljs-keyword">new</span> MyRun();
+        Thread t1 = <span class="hljs-keyword">new</span> Thread(t, <span class="hljs-string">&quot;1&quot;</span>);
+        Thread t2 = <span class="hljs-keyword">new</span> Thread(t, <span class="hljs-string">&quot;2&quot;</span>);
+        t1.start();
+        t2.start();
+        <span class="hljs-keyword">try</span> {
+            t1.join();
+            t2.join();
+        } <span class="hljs-keyword">catch</span> (InterruptedException e) {
+            <span class="hljs-comment">// TODO Auto-generated catch block</span>
+            e.printStackTrace();
+        }
+        System.out.println(<span class="hljs-string">&quot;main thread exit&quot;</span>);
+    }
+    <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRun</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>{
+        <span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">public</span> Object lock = <span class="hljs-keyword">new</span> Object();
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> Semaphore sem = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> Semaphore sem2 = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>) {
+                <span class="hljs-keyword">synchronized</span>(lock) {
+                    <span class="hljs-keyword">if</span>(cnt == -<span class="hljs-number">1</span>)
+                        <span class="hljs-keyword">break</span>;
+                    Random r = <span class="hljs-keyword">new</span> Random();
+                    <span class="hljs-keyword">int</span> n = r.nextInt(<span class="hljs-number">100</span>);
+                    String name = Thread.currentThread().getName();
+                    <span class="hljs-keyword">if</span>(n % <span class="hljs-number">13</span> == <span class="hljs-number">0</span>) {
+                        System.out.println(name + <span class="hljs-string">&quot;won!!!!&quot;</span>);
+                        cnt = -<span class="hljs-number">1</span>;
+                        lock.notify();
+                        <span class="hljs-keyword">break</span>;
+                    } 
+                    cnt ++;
+                    System.out.println(name + <span class="hljs-string">&quot; : &quot;</span> + cnt);
+                    <span class="hljs-keyword">try</span>{
+                        lock.notify();
+                        lock.wait();
+                    } <span class="hljs-keyword">catch</span> (InterruptedException e) {
+                        <span class="hljs-comment">// TODO Auto-generated catch block</span>
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        }
+        <span class="hljs-comment">// public void run() {</span>
+        <span class="hljs-comment">//     while(true) {</span>
+        <span class="hljs-comment">//             try{</span>
+        <span class="hljs-comment">//                 String name = Thread.currentThread().getName();</span>
+        <span class="hljs-comment">//                 if(&quot;1&quot;.equals(name))</span>
+        <span class="hljs-comment">//                     sem.acquire();</span>
+        <span class="hljs-comment">//                 else</span>
+        <span class="hljs-comment">//                     sem2.acquire();</span>
+        <span class="hljs-comment">//                 if(cnt == -1)</span>
+        <span class="hljs-comment">//                     break;</span>
+        <span class="hljs-comment">//                 Random r = new Random();</span>
+        <span class="hljs-comment">//                 int n = r.nextInt(100);</span>
+
+        <span class="hljs-comment">//                 if(n % 13 == 0) {</span>
+        <span class="hljs-comment">//                     System.out.println(name + &quot;miss!!!!&quot;);</span>
+        <span class="hljs-comment">//                     cnt = -1;</span>
+        <span class="hljs-comment">//                     sem.release();</span>
+        <span class="hljs-comment">//                     sem2.release();</span>
+        <span class="hljs-comment">//                     break;</span>
+        <span class="hljs-comment">//                 } </span>
+        <span class="hljs-comment">//                 cnt ++;</span>
+        <span class="hljs-comment">//                 System.out.println(name + &quot; : &quot; + cnt);   </span>
+        <span class="hljs-comment">//                 if(&quot;1&quot;.equals(name))</span>
+        <span class="hljs-comment">//                     sem2.release();</span>
+        <span class="hljs-comment">//                 else </span>
+        <span class="hljs-comment">//                     sem.release();</span>
+        <span class="hljs-comment">//             } catch (Exception e) {</span>
+        <span class="hljs-comment">//                 e.printStackTrace();</span>
+        <span class="hljs-comment">//             }</span>
+        <span class="hljs-comment">//     }</span>
+        <span class="hljs-comment">// }</span>
+
+
+    }
+}
+</code></pre>
+<h2 id="lru-&#x7F13;&#x5B58;&#x5B9E;&#x73B0;">LRU &#x7F13;&#x5B58;&#x5B9E;&#x73B0;</h2>
 <p>&#x601D;&#x8DEF;&#xFF1A;&#x901A;&#x8FC7;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x5B9E;&#x73B0;movenode &#x548C; addtohead&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5BF9;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5229;&#x7528;map&#x8BB0;&#x5F55;key&#x5BF9;&#x5E94;&#x7684;node</p>
 <pre><code class="lang-C++"><span class="hljs-comment">/**
  * Your LRUCache object will be instantiated and called as such:
@@ -823,7 +915,7 @@
 <h1 id="&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x5355;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x83B7;&#x5F97;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x503C;">&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x5355;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x83B7;&#x5F97;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x503C;</h1>
 <p>&#x601D;&#x8DEF;&#xFF1A;&#x901A;&#x8FC7;&#x5FEB;&#x6162;&#x6307;&#x9488;&#x8FDB;&#x884C;&#x8BA1;&#x7B97; </p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x7248;&#x6743;&#x4FE1;&#x606F; all right reserved&#xFF0C;powered by aspire-zero and Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2025-03-16 18:56:14
+2025-03-20 21:57:37
 </span></footer>
                                 
                                 </section>
@@ -867,7 +959,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"面试算法题","level":"1.6.2","depth":2,"next":{"title":"面试题","level":"1.6.3","depth":2,"path":"Chapter4/面试题.md","ref":"Chapter4/面试题.md","articles":[]},"previous":{"title":"算法模板","level":"1.6.1","depth":2,"path":"Chapter4/算法学习.md","ref":"Chapter4/算法学习.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter4/算法题.md","mtime":"2025-03-16T10:56:14.763Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-18T15:00:19.539Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"面试算法题","level":"1.6.2","depth":2,"next":{"title":"面试题","level":"1.6.3","depth":2,"path":"Chapter4/面试题.md","ref":"Chapter4/面试题.md","articles":[]},"previous":{"title":"算法模板","level":"1.6.1","depth":2,"path":"Chapter4/算法学习.md","ref":"Chapter4/算法学习.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","highlight","livereload","search-pro","expandable-chapters-small","splitter","back-to-top-button","github","hide-element","code","custom-favicon","page-toc-button","tbfed-pagefooter"],"root":".","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 版权信息","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/aspire-zero/BigData"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"expandable-chapters-small":{},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","author":"aspire-zero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"知识手册","language":"zh-hans","output.name":"site","links":{"sidebar":{"我的博客":"https://aspire-zero.github.io/"}},"gitbook":"3.2.3","description":"知识手册"},"file":{"path":"Chapter4/算法题.md","mtime":"2025-03-20T13:57:37.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-20T13:58:18.387Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
