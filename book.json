@@ -1,0 +1,49 @@
+{
+    "title": "知识手册",
+    "description": "知识手册",
+    "author": "aspire-zero",
+    "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "root": ".",
+    "links": {
+        "sidebar": {
+            "我的博客": "https://aspire-zero.github.io/"
+        }
+    },
+    "plugins": [
+         "-lunr", 
+         "-search",
+         "-sharing",
+         "-fontsettings",
+         "highlight",
+         "livereload",
+         "search-pro",
+         "expandable-chapters-small",
+         "splitter",
+         "back-to-top-button",
+         "github",
+         "hide-element",
+         "code",
+         "custom-favicon",
+         "page-toc-button",
+         "tbfed-pagefooter"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/aspire-zero/BigData"
+        },
+        "hide-element": {
+            "elements": [".gitbook-link"]
+        },
+       "page-toc-button": {
+            "maxTocDepth": 2,
+            "minTocSize": 2
+        },
+        "tbfed-pagefooter": {
+            "copyright":"Copyright &copy 版权信息",
+            "modify_label": "该文件修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        }
+    }
+}
